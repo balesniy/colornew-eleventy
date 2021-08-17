@@ -1,0 +1,57 @@
+.form {
+	&__item {
+		margin-bottom: 20px;
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	&__title {
+		margin-bottom: 40px;
+		font-size: 22px;
+	}
+
+	&-wrapper {
+		background: $white;
+		padding: 40px;
+	}
+
+	&__button {
+		margin-top: 30px;
+	}
+
+	label.error {
+		color: $error;
+		font-size: 14px;
+		margin-bottom: 10px;
+		padding-left: 18px;
+	}
+
+	&__message {
+		font-size: 14px;
+		margin-bottom: 10px;
+		padding-left: 18px;
+	}
+
+	@media screen and (max-width: 1300px) {
+		&-wrapper {
+			width: 380px;
+		}
+	}
+
+	@media screen and (max-width: 991px) {
+		&__title {
+			margin-bottom: 24px;
+		}
+
+		&-wrapper {
+			padding: 24px;
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		&-wrapper {
+			padding: 0 0 30px;
+			width: 100%;
+		}
+	}
+}

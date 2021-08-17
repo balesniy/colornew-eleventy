@@ -1,0 +1,17 @@
+---
+layout: base.njk
+---
+
+<div class="wrap-all">
+    <div class="wrap-content">
+        {% include "components/header.njk" %}
+
+        {{ content | safe }}
+
+    </div>
+    {% include "components/footer.njk" %}
+    <div class="button-up js-up">
+        <img src="img/arrow.svg" alt="">
+    </div>
+    {% include "components/menu.njk" %}
+</div>

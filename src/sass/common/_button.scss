@@ -1,0 +1,93 @@
+.button {
+	display: inline-flex;
+	cursor: pointer;
+	transition: 0.3s;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+	font-family: $font-medium;
+	font-weight: 400;
+	text-align: center;
+	background: transparent;
+	
+	&_primary {
+		font-size: 22px;
+		padding: 0 30px;
+		height: 69px;
+		border: 2px solid $grey-dark;
+		color: $white;
+		min-width: 270px;
+		&:hover,
+		&:active {
+			background: $grey-dark;
+		}
+	}
+	&_rounded {
+		font-size: 18px;
+		padding: 0 20px;
+		height: 46px;
+		border: 1px solid transparent;
+		color: $white;
+		border-radius: 40px;
+		&:hover,
+		&:active {
+			border-color: $grey-medium;
+		}
+	}
+	&_submit {
+		font-size: 18px;
+		padding: 0 30px;
+		height: 66px;
+		border: none;
+		color: $white;
+		width: 100%;
+		background: $black;
+		&:hover,
+		&:active {
+			background: $grey-dark;
+		}
+	}
+
+	@media screen and (max-width: 991px) {
+		&_primary {
+			font-size: 18px;
+			padding: 0 16px;
+			height: 54px;
+			min-width: 186px;
+		}
+
+		&_rounded {
+			font-size: 14px;
+			padding: 0 12px;
+			height: 35px;
+		}
+
+		&_submit {
+			padding: 0 12px;
+			height: 44px;
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		&_rounded {
+			font-size: 16px;
+			padding: 0;
+			border: none;
+			height: auto;
+		}
+		&_primary {
+			width: 100%;
+		}
+	}
+
+	@media screen and (max-width: 576px) {
+		&_primary {
+			font-size: 14px;
+		}
+
+		&_submit {
+			font-size: 14px;
+			height: 62px;
+		}
+	}
+}

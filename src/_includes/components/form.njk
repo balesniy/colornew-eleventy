@@ -1,0 +1,78 @@
+<form class="form js-validate" name="contact" method="POST" data-netlify="true">
+    <div class="form__message js-validate-message hidden text-red">
+        Thank
+    </div>
+    <div class="form__item">
+        <input name="login" type="text" class="required input"
+               placeholder="Phone number or E-mail"
+               data-msg="You have not entered your E-mail or your Phone number">
+    </div>
+
+    <div class="form__item">
+        <textarea class="input input_text" placeholder="Message"></textarea>
+    </div>
+
+    <div class="form__item">
+        <div class="file js-file">
+            <div class="js-file-wrapper">
+                <div class="g-row g-row_between g-row_middle g-row_s-wrap">
+                    <div class="g-col g-col_s-100">
+                        <label class="file-button text-grey">
+                            <span class="file-button__text text-nowrap">Add document</span>
+
+                            <span class="file-button__icon">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#sp-plus"></use>
+                                </svg>
+                            </span>
+                            <input name="file[]" type="file" multiple=""
+                                   class="file__input js-file-button">
+                        </label><!-- /file-button -->
+                    </div>
+
+                    <div class="g-col mobile-hidden">
+                        <div class="text-grey file__note text-nowrap">Not less than 50
+                            mb
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="js-file-data hidden">
+                <div class="g-row g-row_between g-row_middle g-row_s-wrap">
+                    <div class="g-col g-col_s-100">
+                        <div class="file-data">
+                            <div class="file-data__icon">
+                                <img src="img/doc.png" alt="doc">
+                            </div>
+
+                            <div class="file-data__text js-file-text"></div>
+                        </div><!-- /file -->
+                    </div>
+
+                    <div class="g-col g-col_s-100">
+                        <div class="file-button text-red js-file-remove">
+                            <div class="file-button__text text-nowrap">Delete document
+                            </div>
+                            <div class="file-button__icon">
+                                <svg>
+                                    <use xlink:href="img/sprite.svg#sp-trash"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form__button">
+        <button class="button button_submit" type="submit">Send
+            message
+        </button>
+    </div>
+
+    <div class="text-grey file__note text-nowrap mobile-show">
+        Not less than 50 mb
+    </div>
+</form>

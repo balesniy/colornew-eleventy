@@ -1,0 +1,41 @@
+.system {
+	&-data {
+		margin-top: 60px;
+
+		&__accordion {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 1300px) {
+		&-data {
+			&__table {
+				display: none;
+			}
+
+			&__accordion {
+				display: block;
+			}
+
+			&__item {
+				&:not(:last-child) {
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 991px) {
+		&-data {
+			margin-top: 20px;
+		}
+	}
+
+	@media screen and (max-width: 576px) {
+		&-data {
+			&__accordion {
+				margin: 0 -30px;
+			}
+		}
+	}
+}

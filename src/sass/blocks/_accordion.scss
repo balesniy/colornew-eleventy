@@ -1,0 +1,93 @@
+.accordion {
+    &-button {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 20px;
+		color: $grey-light;
+		font-family: $font-bold;
+		text-transform: uppercase;
+		padding: 10px 30px;
+		cursor: pointer;
+
+		&__icon {
+			width: 20px;
+			height: 20px;
+			position: relative;
+			&::after,
+			&::before {
+				position: absolute;
+				height: 2px;
+				width: 20px;
+				top: 50%;
+				transform: translateY(-50%);
+				background: $grey-light;
+				content: '';
+				transition: 0.3s;
+			}
+		}
+
+		&.is-active {
+            .accordion-button__icon {
+                &::after {
+                  transform: translateY(-50%) rotate(90deg);
+                }
+            }
+        }
+
+		&_dark {
+			background: $black;
+			box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.1);
+		}
+		&_blue {
+			background: $blue;
+		}
+		&_purple {
+			background: #AD1BF2;
+		}
+		&_red {
+			background: #F24F1B;
+		}
+		&_orange {
+			background: #F29C1B;
+		}
+		&_light-blue {
+			background: #1BB1F2;
+		}
+	}
+
+	&-block {
+		display: none;
+
+		&_inside {
+			padding: 15px 30px;
+		}
+
+		&__top {
+			margin-bottom: 5px;
+			font-size: 18px;
+		}
+
+		&__text {
+			&:not(:last-child) {
+				margin-bottom: 10px;
+				padding-bottom: 10px;
+				border-bottom: 1px solid $grey-light;
+			}
+		}
+	}
+
+	@media screen and (max-width: 991px) {
+		&-block {
+			&__top {
+				font-size: 16px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 576px) {
+		&-button {
+			font-size: 12px;
+		}
+	}
+}

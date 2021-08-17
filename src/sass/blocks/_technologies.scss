@@ -1,0 +1,35 @@
+.technologies {
+	transition: 2s ease-in-out;
+	&.is-start {
+		transform: translateX(-25%);
+	}
+
+	&__slider {
+		margin-top: 60px;
+
+		img {
+			display: block;
+			max-height: 70px;
+			width: auto;
+		}
+
+		.swiper-wrapper {
+			transition-timing-function: linear !important;
+			align-items: center;
+		}
+
+		.swiper-slide {
+			width: auto;
+		}
+	}
+
+	@media screen and (max-width: 991px) {
+		&__slider {
+			margin-top: 30px;
+
+			img {
+				max-height: 42px;
+			}
+		}
+	}
+}

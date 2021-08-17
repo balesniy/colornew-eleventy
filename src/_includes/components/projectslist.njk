@@ -1,0 +1,89 @@
+<div class="swiper-container js-portfolio-slider">
+    <div class="swiper-wrapper">
+        {% for project in collections.projects %}
+            <div class="swiper-slide">
+                <div class="project">
+                    <div class="project__image">
+                        <img src="{{ project.data.img }}" alt="project">
+                    </div>
+                    <div class="project__content">
+                        <div class="project-info">
+
+                            <div class="project-info__item project-info__item_half">
+                                <div class="project-info__title text-grey">Client:
+                                </div>
+                                <div class="project-info__text">
+                                    {{ project.data.title }}
+                                </div>
+                            </div>
+
+                            <div class="project-info__item project-info__item_half">
+                                <div class="project-info__title text-grey">Product:
+                                </div>
+                                <div class="project-info__text">
+                                    {{ project.data.product }}
+                                </div>
+                            </div>
+
+                            <div class="project-info__item">
+                                <div class="project-info__text">
+                                    SEARADAR is a full cycle online concierge service for
+                                    professional captains. The project was created for those
+                                    who
+                                    regularly deal with yacht rental issues. Provides
+                                    comprehensive services for the selection and booking of
+                                    yachts,
+                                    advising our clients on rental and travel arrangements
+                                    on yachts.
+                                </div>
+                            </div>
+
+                            <div class="project-info__item">
+                                <div class="project-info__title text-grey">Result:
+                                </div>
+                                <div class="project-info__text">
+                                    {{ project.data.result }}
+                                </div>
+                            </div>
+
+                        </div><!-- /project-info -->
+
+                        <div class="project__bottom">
+                            <div class="g-row g-row_middle g-row_between">
+                                <div class="g-col mobile-hidden">
+
+                                    <div class="g-row g-row_middle g-row_between">
+                                        <div class="g-col">
+                                            <a href="#"
+                                               class="link link_underline-hover text-grey">
+                                                <span class="link__text">#development</span>
+                                            </a>
+                                        </div>
+                                        <div class="g-col">
+                                            <a href="#"
+                                               class="link link_underline-hover text-grey">
+                                                <span class="link__text">#management</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="g-col">
+                                    <a href="{{ project.url }}" class="link link_underline">
+                                        <span class="link__text">see more</span>
+                                        <span class="link__icon">
+                                            <svg>
+                                                <use xlink:href="img/sprite.svg#sp-chevron-right"></use>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /project__content -->
+                </div><!-- /project -->
+            </div>
+        {% endfor %}
+    </div>
+</div>

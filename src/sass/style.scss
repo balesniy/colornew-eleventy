@@ -1,0 +1,30 @@
+@import "_reset.scss";
+@import "_fonts.scss";
+@import "_mixins.scss";
+@import "_variables.scss";
+@import "_overall.scss";
+
+@import "common/_grid.scss";
+@import "common/_icon.scss";
+@import "common/_link.scss";
+@import "common/_button.scss";
+@import "common/_typography.scss";
+@import "common/_input.scss";
+
+@import "blocks/_header.scss";
+@import "blocks/_main-menu.scss";
+@import "blocks/_lang.scss";
+@import "blocks/_hero.scss";
+@import "blocks/_section.scss";
+@import "blocks/_portfolio.scss";
+@import "blocks/_project.scss";
+@import "blocks/_services.scss";
+@import "blocks/_technologies.scss";
+@import "blocks/_team.scss";
+@import "blocks/_table.scss";
+@import "blocks/_form.scss";
+@import "blocks/_file.scss";
+@import "blocks/_footer.scss";
+@import "blocks/_button-up.scss";
+@import "blocks/_system.scss";
+@import "blocks/_accordion.scss";

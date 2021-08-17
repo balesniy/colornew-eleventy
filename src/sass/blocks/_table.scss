@@ -1,0 +1,121 @@
+.table {
+	th {
+		vertical-align: middle;
+		text-align: center;
+		font-size: 20px;
+		color: $grey-light;
+		text-transform: uppercase;
+		padding: 8px;
+		font-weight: 400;
+		line-height: 1.15;
+		&.table_dark {
+			background: $black;
+		}
+		&.table_blue {
+			background: $blue;
+		}
+		&.table_blue1 {
+			background: rgba(27, 82, 242, 0.8);
+		}
+		&.table_blue2 {
+			background: rgba(73, 117, 245, 0.8);
+		}
+		&.table_blue3 {
+			background: rgba(109, 145, 247, 0.8);
+		}
+		&.table_purple {
+			background: #AD1BF2;
+		}
+		&.table_red {
+			background: #F24F1B;
+		}
+		&.table_orange {
+			background: #F29C1B;
+		}
+		&.table_light-blue {
+			background: #1BB1F2;
+		}
+	}
+
+	tr {
+		height: 1px;
+	}
+
+	td {
+		position: relative;
+		border: 1px solid #F2F2F2;
+		font-family: $font-bold;
+		transition: 0.3s ease-in-out;
+		height: 100%;
+		&.table_dark:hover .table__inside {
+			border-color: $black;
+		}
+		&.table_blue:hover .table__inside {
+			border-color: $blue;
+		}
+		&.table_blue1:hover .table__inside {
+			border-color: rgba(27, 82, 242, 0.8);
+		}
+		&.table_blue2:hover .table__inside {
+			border-color: rgba(73, 117, 245, 0.8);
+		}
+		&.table_blue3:hover .table__inside {
+			border-color: rgba(109, 145, 247, 0.8);
+		}
+		&.table_purple:hover .table__inside {
+			border-color: #AD1BF2;
+		}
+		&.table_red:hover .table__inside {
+			border-color: #F24F1B;
+		}
+		&.table_orange:hover .table__inside {
+			border-color: #F29C1B;
+		}
+		&.table_light-blue:hover .table__inside {
+			border-color: #1BB1F2;
+		}
+		&:hover {
+			.table__inside {
+			}
+			.table__add {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+	}
+
+	&__inside {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		border: 2px solid transparent;
+		padding: 20px 10px;
+		transition: 0.3s ease-in-out;
+		margin: -2px -1px 0;
+	}
+
+	&__title {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		padding: 20px 10px;
+	}
+
+	&__add {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background: $black;
+		color: $white;
+		font-size: 14px;
+		font-family: $font-bold;
+		padding: 10px;
+		transition: 0.3s ease-in-out;
+		opacity: 0;
+		visibility: hidden;
+		z-index: 5;
+		margin-top: -2px;
+	}
+}

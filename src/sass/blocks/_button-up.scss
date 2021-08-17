@@ -1,0 +1,33 @@
+.button-up {
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+	transition: 0.3s ease-in-out;
+	width: 60px;
+	height: 60px;
+	opacity: 0;
+	visibility: hidden;
+	cursor: pointer;
+	z-index: 20;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
+
+	img {
+		display: block;
+	}
+
+	&.is-visible {
+		opacity: 1;
+		visibility: visible;
+		&:hover {
+			opacity: 0.6;
+		}
+	}
+
+	@media screen and (max-width: 991px) {
+		width: 40px;
+		height: 40px;
+		bottom: 20px;
+		right: 15px;
+	}
+}

@@ -1,0 +1,90 @@
+.g-row {
+	display: flex;
+	margin: 0 -15px;
+	&_between {
+		justify-content: space-between;
+	}
+	&_middle {
+		align-items: center;
+	}
+	&_wrap {
+		flex-wrap: wrap;
+	}
+	&_reverse {
+		flex-direction: row-reverse;
+	}
+	&_bottom {
+		align-items: flex-end;
+	}
+
+	@media screen and (max-width: 767px) {
+		&_m-wrap {
+			flex-wrap: wrap;
+		}
+	}
+
+	@media screen and (max-width: 576px) {
+		&_s-wrap {
+			flex-wrap: wrap;
+		}
+	}
+}
+.g-col {
+	padding: 0 15px;
+	&_41 {
+		width: 41%;
+		min-width: 41%;
+	}
+	&_33 {
+		width: 33.3333%;
+		min-width: 33.3333%;
+	}
+	&_50 {
+		width: 50%;
+		min-width: 50%;
+	}
+	&_52 {
+		width: 52%;
+		min-width: 52%;
+	}
+	&_59 {
+		width: 59%;
+		min-width: 59%;
+	}
+	&_66 {
+		width: 66.6667%;
+		min-width: 66.6667%;
+	}
+	&_100 {
+		width: 100%;
+		min-width: 100%;
+	}
+	@media screen and (max-width: 1300px) {
+		&_d-100 {
+			width: 100%;
+			min-width: 100%;
+		}
+		&_d-auto {
+			width: auto;
+			min-width: auto;
+		}
+	}
+	@media screen and (max-width: 991px) {
+		&_t-75 {
+			width: 75%;
+			min-width: 75%;
+		}
+	}
+	@media screen and (max-width: 767px) {
+		&_m-100 {
+			width: 100%;
+			min-width: 100%;
+		}
+	}
+	@media screen and (max-width: 576px) {
+		&_s-100 {
+			width: 100%;
+			min-width: 100%;
+		}
+	}
+}

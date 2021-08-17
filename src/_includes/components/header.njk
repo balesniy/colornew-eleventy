@@ -1,0 +1,56 @@
+<header class="header header_main js-header">
+    <div class="container">
+
+        <div class="g-row g-row_middle g-row_between">
+            <div class="g-col">
+
+                <div class="g-row g-row_middle">
+                    <div class="g-col">
+                        <div class="header__logo">
+                            <a href="/" class="logo">
+                                <img src="/img/logotype.svg" alt="logo">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="g-col mobile-hidden">
+                        <a href="tel:{{ meta.tel }}" class="contact-link link link_underline-hover">
+                            <span class="link__text text-nowrap">{{ meta.tel }}</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div><!-- /g-col -->
+
+            <div class="g-col">
+
+                <div class="g-row g-row_middle">
+                    <div class="g-col mobile-hidden">
+                        <div class="lang js-dropdown">
+                            <div class="lang__top js-dropdown-button">
+                                <div class="lang__text">Eng</div>
+                                <div class="lang__icon icon">
+                                    <svg>
+                                        <use xlink:href="/img/sprite.svg#sp-arrow-down"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="lang__dropdown js-dropdown-block">
+                                <a href="#">Rus</a>
+                            </div>
+                        </div><!-- /lang -->
+                    </div>
+
+                    <div class="g-col">
+                        <div class="header__burger js-menu-open">
+                            <svg>
+                                <use xlink:href="/img/sprite.svg#sp-menu"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /g-col -->
+        </div>
+    </div><!-- /container -->
+</header><!-- /header -->

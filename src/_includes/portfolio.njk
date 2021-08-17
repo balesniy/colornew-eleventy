@@ -1,0 +1,74 @@
+---
+layout: base.njk
+---
+
+<div class="project">
+    <div class="project__image">
+        <img src="img/content/project1.jpg" alt="project">
+    </div>
+    <div class="project__content">
+        <div class="project-info">
+            <div class="project-info__item project-info__item_half">
+                <div class="project-info__title text-grey">Product:
+                </div>
+                <div class="project-info__text">
+                    {{ product }}
+                </div>
+            </div>
+
+            <div class="project-info__item">
+                <div class="project-info__text">
+                    {{ content | safe }}
+                </div>
+            </div>
+
+            <div class="project-info__item">
+                <div class="project-info__title text-grey">Result:
+                </div>
+                <div class="project-info__text">
+                    {{ result }}
+                </div>
+            </div>
+
+        </div><!-- /project-info -->
+        <div class="project__bottom">
+            <div class="g-row g-row_middle g-row_between">
+                <div class="g-col mobile-hidden">
+
+                    <div class="g-row g-row_middle g-row_between">
+                        <div class="g-col">
+                            <a href="#"
+                               class="link link_underline-hover text-grey">
+                                <span class="link__text">#development</span>
+                            </a>
+                        </div>
+                        <div class="g-col">
+                            <a href="#"
+                               class="link link_underline-hover text-grey">
+                                <span class="link__text">#management</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="g-col">
+                    <a href="#" class="link link_underline">
+                        <span class="link__text">see more</span>
+                        <span class="link__icon">
+                        <svg>
+                            <use
+                                    xlink:href="img/sprite.svg#sp-chevron-right">
+                            </use>
+                        </svg>
+                    </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div><!-- /project__content -->
+</div><!-- /project -->
+<aside>
+    {% for fact in facts | randomItem %}
+        <p>{{ fact }}</p>
+    {% endfor %}
+</aside>

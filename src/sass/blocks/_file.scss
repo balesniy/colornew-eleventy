@@ -1,0 +1,81 @@
+.file {
+	&__input {
+		opacity: 0;
+		visibility: hidden;
+		position: absolute;
+		left: -99999px;
+	}
+
+	&-button {
+		display: inline-flex;
+		align-items: center;
+		cursor: pointer;
+		transition: 0.3s ease-in-out;
+		&__text {
+			display: block;
+		}
+
+		&__icon {
+			display: block;
+			width: 18px;
+			min-width: 18px;
+			height: 18px;
+			margin-left: 10px;
+		}
+
+		&.text-grey:hover {
+			color: $blue;
+		}
+		&.text-red:hover {
+			color: $error;
+		}
+	}
+
+	&__note {
+		font-size: 14px;
+	}
+
+	&-data {
+		display: inline-flex;
+		align-items: center;
+		background: rgba(58, 128, 247, 0.1);
+		padding: 4px 8px 4px 0;
+		&__text {
+			display: block;
+		}
+
+		&__icon {
+			display: block;
+			width: 62px;
+			min-width: 62px;
+			margin-right: 3px;
+
+			img {
+				display: block;
+			}
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		&__note {
+			margin-top: 20px;
+			text-align: center;
+		}
+	}
+
+	@media screen and (max-width: 576px) {
+		text-align: center;
+
+		&-button {
+			font-size: 16px;
+		}
+
+		&__note {
+			font-size: 12px;
+		}
+
+		&-data {
+			margin-bottom: 16px;
+		}
+	}
+}
