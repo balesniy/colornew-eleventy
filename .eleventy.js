@@ -1,10 +1,16 @@
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const svgSprite = require("eleventy-plugin-svg-sprite");
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./src/sass/");
 
     // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
+
+    eleventyConfig.addPlugin(svgSprite, {
+        path: "./src/img/svg", // relative path to SVG directory
+        // (MUST be defined when initialising plugin)
+    });
 
     // Merge data instead of overriding
     // https://www.11ty.dev/docs/data-deep-merge/
@@ -32,7 +38,6 @@ module.exports = function (eleventyConfig) {
     });
 
     return {
-        // passthroughFileCopy: true,
         dir: {
             input: "src",
             output: "public",
