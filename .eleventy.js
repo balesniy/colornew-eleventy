@@ -1,4 +1,5 @@
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 const svgSprite = require("eleventy-plugin-svg-sprite");
 const Image = require("@11ty/eleventy-img");
 const path = require('path');
@@ -32,6 +33,8 @@ module.exports = function (eleventyConfig) {
 
     // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
+
+    eleventyConfig.addPlugin(pluginRss);
 
     eleventyConfig.addPlugin(svgSprite, {
         path: "./src/img/svg", // relative path to SVG directory
