@@ -1,5 +1,31 @@
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const svgSprite = require("eleventy-plugin-svg-sprite");
+const Image = require("@11ty/eleventy-img");
+const path = require('path');
+
+async function imageShortcode(src, alt = '', sizes = "(min-width: 1024px) 100vw, 50vw") {
+    console.log(`Generating image(s) from:  ${src}`)
+    const metadata = await Image(src, {
+        widths: [300, 600],
+        formats: ['webp', 'jpeg'],
+        urlPath: "/img/",
+        outputDir: "./public/img/",
+        filenameFormat(id, src, width, format, options) {
+            const extension = path.extname(src);
+            const name = path.basename(src, extension);
+
+            return `${name}-${width}w.${format}`;
+        }
+    });
+
+    const imageAttributes = {
+        alt,
+        sizes,
+        loading: "lazy",
+        decoding: "async",
+    };
+    return Image.generateHTML(metadata, imageAttributes);
+}
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./src/sass/");
@@ -12,6 +38,8 @@ module.exports = function (eleventyConfig) {
         // (MUST be defined when initialising plugin)
     });
 
+    eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+
     // Merge data instead of overriding
     // https://www.11ty.dev/docs/data-deep-merge/
     eleventyConfig.setDataDeepMerge(true);
@@ -21,7 +49,6 @@ module.exports = function (eleventyConfig) {
     // layout: post. If you don’t want to rewrite all of those values, just map
     // post to a new file like this:
     // eleventyConfig.addLayoutAlias("post", "layouts/my_new_post_layout.njk");
-
 
 
     eleventyConfig.addPassthroughCopy("./src/fonts");

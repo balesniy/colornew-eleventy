@@ -204,45 +204,13 @@ title: Home page
     <div class="technologies__slider">
         <div class="swiper-container js-technologies-slider js-animate-slider1">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="img/content/logo1.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo2.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo3.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo4.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo5.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo6.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo7.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo22.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo25.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo28.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo31.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo34.png" alt="logo">
-                </div>
-                <div class="swiper-slide">
-                    <img src="img/content/logo37.png" alt="logo">
-                </div>
+                {% for i in range(1, 14) -%}
+                    <div class="swiper-slide">
+{#                        <img src="img/content/logo{{ i }}.png" alt="logo">#}
+                        {% set imgPath = "src/img/content/logo" + i + ".png" %}
+                        {% image imgPath, "logo" %}
+                    </div>
+                {%- endfor %}
             </div>
         </div>
     </div><!-- /technologies__slider -->
