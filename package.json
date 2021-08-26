@@ -12,6 +12,7 @@
     "start": "npm-run-all build:sass --parallel watch:*",
     "build": "npm-run-all build:sass build:eleventy",
     "eslint:report": "eslint --output-file eslint_report.json --format json src/js/",
+    "eslint:fix": "eslint --fix src/js/",
     "test": "npm run eslint:report"
   },
   "keywords": [],
