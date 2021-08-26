@@ -6,6 +6,4 @@ env:
   es2017: true
   browser: true
 
-root: true
-
 extends: 'htmlacademy/vanilla'
