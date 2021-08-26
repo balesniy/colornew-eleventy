@@ -22,17 +22,6 @@ $(document).ready(() => {
     event.stopPropagation();
   });
 
-  // слайдер портфолио
-  var swiper = new Swiper('.js-portfolio-slider', {
-    spaceBetween: 30,
-    breakpoints: {
-      992: {
-        slidesPerView: 'auto',
-        watchSlidesVisibility: true,
-      },
-    },
-  });
-
   // анимация header при скроле
   const $header = $('.js-header');
   let lastScrollTop = 0;
