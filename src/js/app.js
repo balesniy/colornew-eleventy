@@ -1,3 +1,5 @@
+var something;
+
 $(document).ready(() => {
   // открытие закрытие главного меню
   $('.js-menu-open').on('click', () => {
