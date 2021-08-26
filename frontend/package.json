@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "scripts": {
-    "test": "eslint ./bad.js"
+    "test": "eslint --debug ."
   },
   "dependencies": {
     "eslint": "^7.32.0",
