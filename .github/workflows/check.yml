@@ -34,12 +34,12 @@ jobs:
     needs: changedfiles
     # only run there are changed files
     if: ${{needs.changedfiles.outputs.all}}
-#    defaults:
-#      run:
-#        working-directory: ./frontend
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
-      - name: echo changed files
-        run: echo ${{needs.changedfiles.outputs.js}}
+#      - name: echo changed files
+#        run: echo ${{needs.changedfiles.outputs.js}}
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -56,11 +56,11 @@ jobs:
         run: git branch -a
 
       - name: Install dependencies
-        working-directory: ./frontend
+#        working-directory: ./frontend
         run: |
           npm install
 
       - name: Run checks
-        working-directory: ./frontend
+#        working-directory: ./frontend
         run: |
           npm test
