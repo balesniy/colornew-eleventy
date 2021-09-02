@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "scripts": {
-    "test": "eslint ."
+    "test": "eslint $(git diff --relative=frontend --name-only --diff-filter=d --merge-base origin/${GITHUB_BASE_REF} | grep -E \\.js$)"
   },
   "dependencies": {
     "eslint": "^7.32.0",
