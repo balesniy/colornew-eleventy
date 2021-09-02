@@ -7,13 +7,35 @@ on:
 
 name: Project check
 jobs:
+  changedfiles:
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      all: ${{ steps.changes.outputs.all}}
+      vue: ${{ steps.changes.outputs.vue }}
+    steps:
+      # Make sure we have some code to diff.
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Get changed files
+        id: changes
+        # Set outputs using the command.
+        run: |
+          echo "::set-output name=all::$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+          echo "::set-output name=vue::$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .vue$ | xargs)"
   check:
     name: Check
     runs-on: ubuntu-latest
+    # require the first job to have run
+    needs: changedfiles
+    # only run there are changed files
+    if: ${{needs.changedfiles.outputs.all}}
     defaults:
       run:
         working-directory: ./frontend
     steps:
+      - name: echo changed files
+        run: echo ${{needs.changedfiles.outputs.all}}
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
