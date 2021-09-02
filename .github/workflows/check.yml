@@ -23,8 +23,8 @@ jobs:
         id: changes
         # Set outputs using the command.
         run: |
-          echo "::set-output name=all::$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
-          echo "::set-output name=vue::$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .vue$ | xargs)"
+          echo "::set-output name=all::$(git diff --relative=frontend --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+          echo "::set-output name=vue::$(git diff --relative=frontend --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .vue$ | xargs)"
   check:
     name: Check
     runs-on: ubuntu-latest
@@ -41,7 +41,9 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: '14'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
 
       - uses: actions/checkout@v2
         name: Checkout
