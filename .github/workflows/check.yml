@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      all: ${{ steps.changes.outputs.all}}
+      all: ${{ steps.changes.outputs.all }}
+      js: ${{ steps.changes.outputs.js }}
       vue: ${{ steps.changes.outputs.vue }}
     steps:
       # Make sure we have some code to diff.
@@ -23,8 +24,9 @@ jobs:
         id: changes
         # Set outputs using the command.
         run: |
-          echo "::set-output name=all::$(git diff --relative=frontend --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
-          echo "::set-output name=vue::$(git diff --relative=frontend --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .vue$ | xargs)"
+          echo "::set-output name=all::$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+          echo "::set-output name=js::$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .js$ | xargs)"
+          echo "::set-output name=vue::$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .vue$ | xargs)"
   check:
     name: Check
     runs-on: ubuntu-latest
@@ -32,12 +34,12 @@ jobs:
     needs: changedfiles
     # only run there are changed files
     if: ${{needs.changedfiles.outputs.all}}
-    defaults:
-      run:
-        working-directory: ./frontend
+#    defaults:
+#      run:
+#        working-directory: ./frontend
     steps:
       - name: echo changed files
-        run: echo ${{needs.changedfiles.outputs.all}}
+        run: echo ${{needs.changedfiles.outputs.js}}
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -54,9 +56,11 @@ jobs:
         run: git branch -a
 
       - name: Install dependencies
+        working-directory: ./frontend
         run: |
           npm install
 
       - name: Run checks
+        working-directory: ./frontend
         run: |
           npm test
