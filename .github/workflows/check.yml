@@ -7,35 +7,56 @@ on:
 
 name: Project check
 jobs:
+  changedfiles:
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      all: ${{ steps.changes.outputs.all }}
+      js: ${{ steps.changes.outputs.js }}
+      vue: ${{ steps.changes.outputs.vue }}
+    steps:
+      # Make sure we have some code to diff.
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Get changed files
+        id: changes
+        # Set outputs using the command.
+        run: |
+          echo "::set-output name=all::$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+          echo "::set-output name=js::$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .js$ | xargs)"
+          echo "::set-output name=vue::$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .vue$ | xargs)"
   check:
     name: Check
     runs-on: ubuntu-latest
+    # require the first job to have run
+    needs: changedfiles
+    # only run there are changed files
+    if: ${{needs.changedfiles.outputs.all}}
+#    defaults:
+#      run:
+#        working-directory: ./frontend
     steps:
+      - uses: actions/checkout@v2
+        name: Checkout
+        with:
+          fetch-depth: 0
+      - name: echo changed files
+        run: echo ${{needs.changedfiles.outputs.js}}
       - name: Set up Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: '14'
-
-      - uses: actions/checkout@master
-        name: Checkout
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
+        working-directory: ./frontend
         run: |
-          npm install
+          npm ci
 
       - name: Run checks
+        working-directory: ./frontend
         run: |
           npm test
-        continue-on-error: true
-
-      - name: Annotate Code Linting Results
-        uses: ataylorme/eslint-annotate-action@1.2.0
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          report-json: "eslint_report.json"
-
-      - name: Upload ESLint report
-        uses: actions/upload-artifact@v2
-        with:
-          name: eslint_report.json
-          path: eslint_report.json

@@ -1,3 +1,5 @@
+var something;
+
 $(document).ready(() => {
   // открытие закрытие главного меню
   $('.js-menu-open').on('click', () => {
@@ -20,17 +22,6 @@ $(document).ready(() => {
     {return;}
     $('.js-dropdown').removeClass('is-active');
     event.stopPropagation();
-  });
-
-  // слайдер портфолио
-  var swiper = new Swiper('.js-portfolio-slider', {
-    spaceBetween: 30,
-    breakpoints: {
-      992: {
-        slidesPerView: 'auto',
-        watchSlidesVisibility: true,
-      },
-    },
   });
 
   // анимация header при скроле
