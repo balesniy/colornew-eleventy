@@ -9,6 +9,7 @@
 		background-size: cover;
 		position: relative;
 		min-height: 316px;
+		display: block;
 
 		&::after {
 			content: '';
@@ -19,6 +20,7 @@
 			left: 0;
 			right: 0;
 			z-index: 1;
+			transition: 0.3s ease-in-out;
 		}
 
 		&__content {
@@ -35,6 +37,24 @@
 			padding: 24px 0 30px;
 			font-size: 20px;
 			line-height: 1.8;
+			display: block;
+		}
+
+		&__title {
+			display: block;
+		}
+
+		&__bottom {
+			display: block;
+		}
+
+		&:hover {
+			&::after {
+				opacity: 0.8;
+			}
+			.link {
+				color: $white;
+			}
 		}
 	}
 

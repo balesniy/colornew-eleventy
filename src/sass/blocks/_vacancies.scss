@@ -1,0 +1,30 @@
+.vacancies {
+
+	&__title {
+		font-size: 32px;
+		font-family: $font-semi;
+		margin-bottom: 30px;
+	}
+
+	&-list {
+		&__item {
+			padding-bottom: 30px;
+		}
+	}
+	
+
+	@media screen and (max-width: 991px) {
+		&__title {
+			font-size: 26px;
+			margin-bottom: 20px;
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		
+	}
+
+	@media screen and (max-width: 576px) {
+		
+	}
+}

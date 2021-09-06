@@ -5,11 +5,10 @@
 	right: 0;
 	height: 100vh;
 	background: $black;
-	display: flex;
-	flex-direction: column;
 	z-index: 105;
 	transition: 0.8s ease-in-out;
 	transform: translateY(-100%);
+	overflow-y: auto;
 
 	&.is-open {
 		transform: translateY(0);
@@ -20,9 +19,8 @@
 	}
 
 	&__content {
-		flex-grow: 1;
-		overflow-y: auto;
 		padding-bottom: 40px;
+		flex-grow: 1;
 	}
 
 	&__list {
@@ -54,6 +52,7 @@
 			margin-left: 16px;
 			transition: 0.3s ease-in-out;
 			opacity: 0;
+			cursor: default;
 		}
 
 		&::before {
@@ -69,6 +68,7 @@
 			margin-right: 16px;
 			transition: 0.3s ease-in-out;
 			opacity: 0;
+			cursor: default;
 		}
 
 		&:hover,
@@ -85,6 +85,12 @@
 		border-top: 1px solid rgba(255, 255, 255, 0.2);
 		padding: 40px 0;
 	}
+
+	.mCSB_container {
+		display: flex;
+		min-height: 100%;
+		flex-direction: column;
+	} 
 
 	@media screen and (max-width: 991px) {
 		&__link {

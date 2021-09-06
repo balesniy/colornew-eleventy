@@ -27,14 +27,7 @@
 
                             <div class="project-info__item">
                                 <div class="project-info__text">
-                                    SEARADAR is a full cycle online concierge service for
-                                    professional captains. The project was created for those
-                                    who
-                                    regularly deal with yacht rental issues. Provides
-                                    comprehensive services for the selection and booking of
-                                    yachts,
-                                    advising our clients on rental and travel arrangements
-                                    on yachts.
+                                    {{ project.templateContent | safe }}
                                 </div>
                             </div>
 
@@ -53,24 +46,20 @@
                                 <div class="g-col mobile-hidden">
 
                                     <div class="g-row g-row_middle g-row_between">
+                                        {% for tag in project.data.projects %}
                                         <div class="g-col">
-                                            <a href="#"
+                                            <a href="/portfolio/?tag={{ tag }}"
                                                class="link link_underline-hover text-grey">
-                                                <span class="link__text">#development</span>
+                                                <span class="link__text">#{{ tag }}</span>
                                             </a>
                                         </div>
-                                        <div class="g-col">
-                                            <a href="#"
-                                               class="link link_underline-hover text-grey">
-                                                <span class="link__text">#management</span>
-                                            </a>
-                                        </div>
+                                        {% endfor %}
                                     </div>
 
                                 </div>
 
                                 <div class="g-col">
-                                    <a href="{{ project.url }}" class="link link_underline">
+                                    <a href="/portfolio/" class="link link_underline">
                                         <span class="link__text">see more</span>
                                         <span class="link__icon">
                                             {% svg "sp-chevron-right" %}

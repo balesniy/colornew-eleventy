@@ -1,0 +1,5 @@
+{
+  "layout": "vacancy",
+  "permalink": "/{{ page.fileSlug }}/",
+  "tags": "vacancies"
+}

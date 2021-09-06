@@ -4,7 +4,7 @@ layout: base.njk
 
 <div class="project">
     <div class="project__image">
-        <img src="img/content/project1.jpg" alt="project">
+        <img src="/img/content/project1.jpg" alt="project">
     </div>
     <div class="project__content">
         <div class="project-info">
@@ -63,8 +63,3 @@ layout: base.njk
         </div>
     </div><!-- /project__content -->
 </div><!-- /project -->
-<aside>
-    {% for fact in facts | randomItem %}
-        <p>{{ fact }}</p>
-    {% endfor %}
-</aside>

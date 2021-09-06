@@ -1,7 +1,9 @@
 .technologies {
-	transition: 2s ease-in-out;
+	transition: 3s ease-in-out;
+	overflow: hidden;
+	
 	&.is-start {
-		transform: translateX(-25%);
+		transform: translate(-100%, 25%);
 	}
 
 	&__slider {

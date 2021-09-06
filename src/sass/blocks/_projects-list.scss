@@ -1,0 +1,30 @@
+.projects-list {
+	margin-top: 50px;
+	min-height: 50vh;
+	&__item {
+		padding-bottom: 30px;
+		
+
+		.project {
+			height: auto;
+		}
+	}
+	
+	@media screen and (max-width: 991px) {
+		margin-top: 10px;
+		&__item {
+			padding-bottom: 20px;
+
+			.project {
+				&__content {
+					padding-top: 16px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		margin-top: 0;
+		padding-bottom: 20px;
+	}
+}

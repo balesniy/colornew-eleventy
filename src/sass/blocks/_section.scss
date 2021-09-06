@@ -12,6 +12,10 @@
 		padding-top: 100px;
 	}
 
+	&_feedback {
+		padding: 60px 0;
+	}
+
 	&-title {
 		position: relative;
 		display: inline-block;
@@ -68,6 +72,10 @@
 		padding-top: 110px;
 	}
 
+	&_bg {
+		background: $dark;
+	}
+
 	@media screen and (max-width: 991px) {
 		&_py {
 			padding-top: 80px;
@@ -80,6 +88,10 @@
 
 		&_pt {
 			padding-top: 80px;
+		}
+
+		&_feedback {
+			padding: 40px 0;
 		}
 
 		&-title {
@@ -126,6 +138,10 @@
 
 		&_pt {
 			padding-top: 30px;
+		}
+
+		&_feedback {
+			padding: 30px 0;
 		}
 
 		&_map {

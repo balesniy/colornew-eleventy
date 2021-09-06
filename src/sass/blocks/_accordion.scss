@@ -20,17 +20,22 @@
 				height: 2px;
 				width: 20px;
 				top: 50%;
-				transform: translateY(-50%);
 				background: $grey-light;
 				content: '';
 				transition: 0.3s;
+			}
+			&::after {
+				transform: translateY(-50%) rotate(90deg);
+			}
+			&::before {
+				transform: translateY(-50%);
 			}
 		}
 
 		&.is-active {
             .accordion-button__icon {
                 &::after {
-                  transform: translateY(-50%) rotate(90deg);
+                  transform: translateY(-50%) rotate(0);
                 }
             }
         }

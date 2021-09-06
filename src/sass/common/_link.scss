@@ -33,27 +33,11 @@
 		color: $white;	
 	}
 
-	&_underline-hover:hover {
+	&_underline:hover {
 		.link__text {
 			&::after {
 				width: 100%;
 			}
-		}
-	}
-
-	&_underline {
-		.link__text {
-			&::after {
-				width: 100%;
-			}
-		}
-
-		&:hover {
-			.link__text {
-				&::after {
-					width: 0;
-				}
-			}	
 		}
 	}	
 }

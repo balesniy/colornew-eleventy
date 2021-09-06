@@ -11,11 +11,17 @@ public_folder: "/img/uploads" # relative to the base of the built site
 # Please run "npx netlify-cms-proxy-server" for local backend
 local_backend: true
 
+show_preview_links: false
+search: false
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
 
 collections:
   # Our portfolio
   - name: "projects" # Used in routes, e.g., /admin/collections/blog
-    label: "Project" # Used in the UI
+    label: "Projects" # Used in the UI
     folder: "src/portfolio" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
@@ -23,26 +29,71 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Product", name: "product", widget: "string", default: "Web - application" }
       - { label: "Result", name: "result", widget: "text" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["development", "management"] }
+      - { label: "Projects Tags", name: "projects", widget: "list", default: ["development", "management"] }
+      - { label: "Technology Tags", name: "technologies", widget: "list", default: ["development", "management"] }
       - { label: "Body", name: "body", widget: "markdown" }
       - label: "Featured Image"
         name: "img"
         widget: "image"
         choose_url: true
-  # Our pages e.g. About
-  - name: "pages"
-    label: "Page"
-    folder: "pages"
-    create: false # Change to true to allow editors to create new pages
+      - label: "Logo Image"
+        name: "logo"
+        widget: "image"
+        choose_url: true
+  # Our vacancies
+  - name: "vacancies"
+    label: "Vacancies"
+    folder: "src/vacancies"
+    create: true
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Permalink", name: "permalink", widget: "string" }
-      - label: "Navigation" # https://www.11ty.dev/docs/plugins/navigation/
-        name: "eleventyNavigation"
-        widget: "object"
-        fields:
-          - { label: "Key", name: "key", widget: "string" }
-          - { label: "Order", name: "order", widget: "number", default: 0 }
       - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Projects Tags"
+        name: "projects"
+        widget: "relation"
+        multiple: true
+        min: 1
+        collection: "settings"
+        file: "projectsTypes"
+        value_field: "items.*.title"
+        search_fields: ["items.*.title"]
+      - { label: "Technology Tags", name: "technologies", widget: "list", default: [ "development", "management" ] }
+      - { label: "Tasks", name: "tasks", widget: "list", default: [ "development", "learn" ] }
+      - label: "Featured Image"
+        name: "img"
+        widget: "image"
+        choose_url: true
+  # Settings
+  - label: "Settings"
+    name: "settings"
+    files:
+      - label: "Meta"
+        name: "meta"
+        file: "src/_data/meta.json"
+        editor:
+          preview: false
+        fields:
+          - { label: siteName, name: siteName, widget: string }
+          - { label: siteDescription, name: siteDescription, widget: string }
+          - { label: mailto, name: mailto, widget: string }
+          - { label: tel, name: tel, widget: string }
+          - { label: employees, name: employees, widget: number, value_type: "int" }
+      - label: "Projects Types"
+        name: "projectsTypes"
+        file: "src/_data/projectsTypes.json"
+        fields:
+          - name: items
+            widget: list
+            fields:
+              - { name: "title", widget: "string" }
+              - { name: "toggle", widget: "string" }
+      - label: "Technologies List"
+        name: "technologiesList"
+        file: "src/_data/technologiesList.json"
+        fields:
+          - name: items
+            widget: list
+            fields:
+              - { name: "title", widget: "string" }
+              - { name: "toggle", widget: "string" }

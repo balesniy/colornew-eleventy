@@ -1,0 +1,23 @@
+.project_single {
+
+	@media screen and (min-width: 992px) {
+		.project__content {
+			background: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+			color: #000000;
+		}
+	}
+
+	@media screen and (max-width: 991px) {
+		.project__image {
+			margin-top: 20px;
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		
+	}
+
+	@media screen and (max-width: 576px) {
+		
+	}
+}

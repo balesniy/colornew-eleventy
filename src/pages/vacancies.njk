@@ -1,0 +1,191 @@
+---
+title: Vacancies
+feedback:
+    title: Come get acquainted
+    text: We may have a product and the team missing exactly you.
+---
+
+<div class="section section_pb">
+    <div class="container">
+        <div class="page-hero">
+            <div class="breadcrumbs text-grey-medium">
+                <div class="breadcrumbs__item">
+                    <a href="#" class="link link_underline">
+                        <span class="link__text">ColorNew</span>
+                    </a>
+                </div>
+                <div class="breadcrumbs__item">
+                    >
+                </div>
+                <div class="breadcrumbs__item">
+                    Vacancies
+                </div>
+            </div><!-- /breadcrumbs -->
+
+            <h1>We need promising employees</h1>
+
+            <div class="page-hero__text">
+                Our team is our strength. We are glad to cooperate with both experienced and novice
+                developers. We love to develop
+                ourselves and our team. Cooperation with ColorNew Company is guaranteed to develop you:
+            </div>
+        </div><!-- /page-hero -->
+
+        <div class="points">
+
+            <div class="points__item g-row g-row_bottom">
+                <div class="g-col g-col_50 g-col_m-100">
+                    <div class="points__content">
+                        <div class="points__number">
+                            {% svg "01" %}
+                        </div>
+                        <div class="points__title">Intellectually</div>
+                        <div class="points__text">
+                            Comfortable intellectual workload allows each employee to develop in a balanced
+                            way
+                            in his own vector. Experienced
+                            Colornew employees love to mentor and help develop their budding colleagues.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="g-col g-col_50 mobile-hidden">
+                    <div class="points__image">
+                        <img src="/img/content/vacancy1.jpg" alt="">
+                    </div>
+                </div>
+            </div><!-- /points__item -->
+
+            <div class="points__item g-row g-row_bottom g-row_reverse">
+                <div class="g-col g-col_50 g-col_m-100">
+                    <div class="points__content">
+                        <div class="points__number">
+                            {% svg "02" %}
+                        </div>
+                        <div class="points__title">Professionally</div>
+                        <div class="points__text">
+                            The personnel development system allows you to objectively assess the current
+                            level
+                            of professionalism and choose the
+                            optimal vector of employee development.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="g-col g-col_50 mobile-hidden">
+                    <div class="points__image">
+                        <img src="/img/content/vacancy2.jpg" alt="">
+                    </div>
+                </div>
+            </div><!-- /points__item -->
+
+            <div class="points__item g-row g-row_bottom">
+                <div class="g-col g-col_50 g-col_m-100">
+                    <div class="points__content">
+                        <div class="points__number">
+                            {% svg "03" %}
+                        </div>
+                        <div class="points__title">Emotionally</div>
+                        <div class="points__text">
+                            Improving emotional intelligence is an integral part of balanced employee
+                            development. We pay a lot of attention to this
+                            part of the development of our team.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="g-col g-col_50 mobile-hidden">
+                    <div class="points__image">
+                        <img src="/img/content/vacancy3.jpg" alt="">
+                    </div>
+                </div>
+            </div><!-- /points__item -->
+
+        </div><!-- /points -->
+
+        <div class="vacancies">
+            <div class="vacancies__title">
+                Vacancies <span class="text-blue">({{ collections.vacancies.length }})</span>
+            </div>
+        </div><!-- /vacancies -->
+
+        <div class="nav nav_main">
+            <div class="nav__item">
+                <button type="button" class="button button_nav js-sorting-button" data-toggle="all">
+                    All projects
+                </button>
+            </div>
+            {% for item in projectsTypes.items %}
+                <div class="nav__item">
+                    <button type="button" class="button button_nav js-sorting-button" data-toggle="{{ item.toggle }}">
+                        {{ item.title }}
+                    </button>
+                </div>
+            {%- endfor %}
+        </div><!-- /nav -->
+
+        <div class="nav">
+            <div class="nav__item">
+                <button type="button" class="button button_nav js-sorting-button" data-toggle="all">
+                    All technologies
+                </button>
+            </div>
+            {% for item in technologiesList.items %}
+                <div class="nav__item">
+                    <button type="button" class="button button_nav js-sorting-button" data-toggle="{{ item.toggle }}">
+                        {{ item.title }}
+                    </button>
+                </div>
+            {%- endfor %}
+        </div><!-- /nav -->
+
+        <div class="vacancies-list">
+            <div class="g-row g-row_wrap js-sorting">
+                {% for vacancy in collections.vacancies %}
+                {% set projectsTags = vacancy.data.projects %}
+                    <div class="g-col g-col_33 g-col_t-50 g-col_s-100 js-sorting-item vacancies-list__item {{ projectsTags | join(' ') | lower }} {{ vacancy.data.technologies | join(' ') | lower }}">
+                        <a href="{{ vacancy.url }}" class="vacancy">
+                            <span class="vacancy__arrow">{% svg "sp-arrow-up-right" %}</span>
+                            <span class="vacancy__label text-grey">ColorNew</span>
+                            <span class="vacancy__title">{{ vacancy.data.title }}</span>
+                            <ul class="list">
+                                {{ vacancy.templateContent | safe }}
+                            </ul>
+                            <div class="g-row g-row_middle g-row_wrap">
+                                {% for name in projectsTags %}
+                                    <div class="g-col">
+                                        <div class="vacancy__tag text-grey-medium js-sorting-tag"
+                                             data-tag="{{ name | lower }}">
+                                            #{{ name }}
+                                        </div>
+                                    </div>
+                                {%- endfor %}
+
+                                {% for name in vacancy.data.technologies %}
+                                    <div class="g-col">
+                                        <div class="vacancy__tag text-grey-medium js-sorting-tag"
+                                             data-tag="{{ name | lower }}">
+                                            #{{ name }}
+                                        </div>
+                                    </div>
+                                {%- endfor %}
+                            </div>
+                        </a><!-- /vacancy -->
+                    </div>
+                {%- endfor %}
+            </div>
+        </div>
+
+        <div class="mobile-show">
+            <a href="#" class="button button_secondary">
+                <span class="button__text">Show more vacancies</span>
+            </a>
+        </div>
+    </div><!-- /container -->
+</div><!-- /section -->
+
+{% include "components/feedback.njk" %}
+{% include "components/map.njk" %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>

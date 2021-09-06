@@ -33,9 +33,19 @@ $(document).ready(() => {
     },
   });
 
+  swiper.on('slideChange', function () {
+    const i = this.realIndex + 1;
+
+    if (i == 1) {
+      $('.js-portfolio-text').removeClass('is-animate');
+    }
+    else {
+      $('.js-portfolio-text').addClass('is-animate');
+    }
+  });
+
   // анимация header при скроле
   const $header = $('.js-header');
-  let lastScrollTop = 0;
 
   function fixedHeader() {
     if ($(window).scrollTop() > 70) {
@@ -47,60 +57,51 @@ $(document).ready(() => {
   }
   fixedHeader();
 
-  $(window).scroll(function () {
+  $(window).scroll(() => {
     fixedHeader();
-
-    const curPosition = $(this).scrollTop();
-    if (curPosition > lastScrollTop) {
-      $header.addClass('is-up');
-    } else {
-      $header.removeClass('is-up');
-    }
-
-    lastScrollTop = curPosition;
   });
 
   // слайдеры технологии
-  var swiper = new Swiper('.js-technologies-slider', {
-    spaceBetween: 60,
-    speed: 6000,
-    slidesPerView: 'auto',
-    watchSlidesVisibility: true,
-    loop: true,
-    loopFillGroupWithBlank: true,
-    autoplay: {
-      delay: 1,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      // when window width is >= 1024px
-      1024: {
-        autoplay: false,
+  if ($('.js-technologies-slider').length > 0) {
+    var swiper = new Swiper('.js-technologies-slider', {
+      spaceBetween: 60,
+      speed: 6000,
+      slidesPerView: 'auto',
+      watchSlidesVisibility: true,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      autoplay: {
+        delay: 1,
+        disableOnInteraction: false,
       },
-    },
-  });
+      breakpoints: {
+        // when window width is >= 1024px
+        1024: {
+          autoplay: false,
+        },
+      },
+    });
 
-  window.onwheel = function (e) {
-    const animateSlider1 = document.querySelector('.js-animate-slider1').swiper;
-    const animateSlider2 = document.querySelector('.js-animate-slider2').swiper;
-    const animateSlider3 = document.querySelector('.js-animate-slider3').swiper;
-    const val = e.deltaY;
-    if (val > 0) {
-      animateSlider1.slideNext(600);
-      animateSlider2.slideNext(600);
-      animateSlider3.slideNext(600);
-    }
-    else {
-      animateSlider1.slidePrev(600);
-      animateSlider2.slidePrev(600);
-      animateSlider3.slidePrev(600);
-    }
-  };
-
+    window.onwheel = function (e) {
+      const animateSlider1 = document.querySelector('.js-animate-slider1').swiper;
+      const animateSlider2 = document.querySelector('.js-animate-slider2').swiper;
+      const animateSlider3 = document.querySelector('.js-animate-slider3').swiper;
+      const val = e.deltaY;
+      if (val > 0) {
+        animateSlider1.slideNext(600);
+        animateSlider2.slideNext(600);
+        animateSlider3.slideNext(600);
+      }
+      else {
+        animateSlider1.slidePrev(600);
+        animateSlider2.slidePrev(600);
+        animateSlider3.slidePrev(600);
+      }
+    };
+  }
   // слайдер команда
   var swiper = new Swiper('.js-team-slider', {
     spaceBetween: 14,
-    slidesPerView: 3,
     slidesPerView: 'auto',
     breakpoints: {
       // when window width is >= 768px
@@ -111,6 +112,7 @@ $(document).ready(() => {
 
       // when window width is >= 992px
       992: {
+        slidesPerView: 3,
         spaceBetween: 30,
       },
     },
@@ -172,7 +174,6 @@ $(document).ready(() => {
 
   // aнимация картинки hero
   $('.js-hero').on('mousemove', (event) => {
-    console.log('move');
     $('.js-hero-circle').css({
       'top': `${event.pageY * 1 + 5  }px`,
       'left': `${event.pageX * 1 + 5  }px`,
@@ -202,65 +203,68 @@ $(document).ready(() => {
   });
 
   // aнимация чисел
-  let show_numbers = null;
+  if ($('.js-animate-block').length > 0) {
+    let show_numbers = null;
 
-  function animateNumber() {
-    const wt = $(window).scrollTop();
-    const wh = $(window).height();
-    const et = $('.js-animate-block').offset().top;
-    const eh = $('.js-animate-block').outerHeight();
+    function animateNumber() {
+      const wt = $(window).scrollTop();
+      const wh = $(window).height();
+      const et = $('.js-animate-block').offset().top;
+      const eh = $('.js-animate-block').outerHeight();
 
-    if (wt + wh >= et && wt + wh - eh * 2 <= et + (wh - eh)) {
+      if (wt + wh >= et && wt + wh - eh * 2 <= et + (wh - eh)) {
 
-      if (show_numbers == null || show_numbers == false) {
+        if (show_numbers == null || show_numbers == false) {
 
-        $('.js-animate-number').each(function () {
-          $(this).prop('Counter', 0).animate({
-            Counter: $(this).attr('data-number'),
-          }, {
-            duration: 1000,
-            easing: 'swing',
-            step: function (now) {
-              $(this).text(Math.ceil(now));
-            },
+          $('.js-animate-number').each(function () {
+            $(this).prop('Counter', 0).animate({
+              Counter: $(this).attr('data-number'),
+            }, {
+              duration: 1000,
+              easing: 'swing',
+              step: function (now) {
+                $(this).text(Math.ceil(now));
+              },
+            });
           });
-        });
-        setTimeout(() => {
-          $('.js-animate-text').fadeIn();
-        }, 1000);
+          setTimeout(() => {
+            $('.js-animate-text').fadeIn();
+          }, 1000);
+        }
+        show_numbers = true;
       }
-      show_numbers = true;
     }
-  }
 
-  animateNumber();
-  $(window).scroll(() => {
     animateNumber();
-  });
+    $(window).scroll(() => {
+      animateNumber();
+    });
+  }
 
   // анимация белого фона
-  let show_technologies = null;
+  if ($('.js-technologies').length > 0) {
+    let show_technologies = null;
 
-  function animateTechnologies() {
-    const wt = $(window).scrollTop();
-    const wh = $(window).height();
-    const et = $('.js-technologies').offset().top;
-    const eh = $('.js-technologies').outerHeight();
+    function animateTechnologies() {
+      const wt = $(window).scrollTop();
+      const wh = $(window).height() / 2;
+      const et = $('.js-technologies').offset().top;
+      const eh = $('.js-technologies').outerHeight();
 
-    if (wt + wh >= et && wt + wh - eh * 2 <= et + (wh - eh)) {
+      if (wt + wh >= et && wt + wh - eh * 2 <= et + (wh - eh)) {
 
-      if (show_technologies == null || show_technologies == false) {
+        if (show_technologies == null || show_technologies == false) {
 
-        $('.js-technologies').removeClass('is-start');
+          $('.js-technologies').removeClass('is-start');
+        }
+        show_technologies = true;
       }
-      show_technologies = true;
     }
-  }
-  animateTechnologies();
-  $(window).scroll(() => {
     animateTechnologies();
-  });
-
+    $(window).scroll(() => {
+      animateTechnologies();
+    });
+  }
   $('.js-accordion-button').on('click', function () {
     const $this = $(this);
     $this.toggleClass('is-active');
@@ -272,4 +276,116 @@ $(document).ready(() => {
     $this.toggleClass('is-active');
     $this.closest('.js-accordion-inside').find('.js-accordion-block-inside').slideToggle();
   });
+
+  // кастомизация скрола
+  $('.js-scrollbar').mCustomScrollbar();
+
+  // фильтрация проектов
+  if ($('.js-sorting').length > 0) {
+    function masonryGrid() {
+      const $container = $('.js-sorting');
+      // initialize
+      $container.masonry({
+        itemSelector: '.js-sorting-item',
+        isAnimated: true,
+        columnWidth: '.js-sorting-item',
+      });
+      $container.masonry('reloadItems');
+      $container.masonry('layout');
+    }
+
+    masonryGrid();
+  }
+
+
+  if ($('.js-sorting').length > 0) {
+    const mixer = mixitup('.js-sorting', {
+      selectors: {
+        target: '.js-sorting-item',
+      },
+      animation: {
+        enable: false,
+      },
+      classNames: {
+        block: '',
+        elementToggle: 'is',
+      },
+      callbacks: {
+        onMixEnd: function (state) {
+          masonryGrid();
+        },
+      },
+    });
+  }
+
+
+  function checkActive() {
+    $('.js-sorting-button.is-active').each(function () {
+      const $this = $(this);
+      const params = $this.attr('data-toggle').substr(1);
+      $(`.js-sorting-tag[data-tag="${  params  }"]`).addClass('is-selected');
+    });
+  }
+
+  const tag = (new URL(window.location)).searchParams.get('tag');
+  if (tag) {
+    const button = $(`.js-sorting-button[data-toggle=".${ tag }"]`);
+    const nav = button.closest('.nav');
+    const current = nav.find('.js-sorting-button.is-active');
+    current.removeClass('is-active');
+    button.addClass('is-active');
+  }
+  checkActive();
+
+  $('.js-sorting-button').on('click', function () {
+    const $this = $(this);
+    const param = $this.attr('data-toggle').substr(1);
+    if ($this.hasClass('is-active')) {
+      $('.js-sorting-tag').removeClass('is-selected');
+      $(`.js-sorting-tag[data-tag="${  param  }"]`).addClass('is-selected');
+      checkActive();
+      $('.js-sorting-item').removeClass('is-down');
+    } else {
+      $(`.js-sorting-tag[data-tag="${  param  }"]`).removeClass('is-selected');
+      checkActive();
+      $('.js-sorting-item').removeClass('is-down');
+    }
+    $('.js-sorting').masonry('reloadItems');
+  });
+
+  // показ скрытых блоков в проектах мобильная версия
+  $('.js-project-more').on('click', function () {
+    const $this = $(this);
+    const $buttonText = $this.find('.js-project-more-text');
+    const $projectItem = $this.closest('.js-sorting-item');
+    const $projectInfo = $projectItem.find('.js-project-content');
+    const heightItem = $projectItem.innerHeight();
+    const heightContent = $projectInfo.innerHeight();
+
+    if ($this.hasClass('is-active')) {
+      $this.removeClass('is-active');
+      $buttonText.text('Show information');
+      $projectItem.innerHeight(heightItem - heightContent);
+      $projectInfo.slideUp();
+      masonryGrid();
+    } else {
+      $this.addClass('is-active');
+      $buttonText.text('Close information');
+      $projectItem.innerHeight(heightItem + heightContent);
+      $projectInfo.slideDown();
+      masonryGrid();
+    }
+  });
+
+  // форма обратной связи
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'multipart/form-data' },
+      body: new URLSearchParams(formData).toString(),
+    });
+  };
+  document.querySelector('.form').addEventListener('submit', handleSubmit);
 });

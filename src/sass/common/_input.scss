@@ -33,9 +33,9 @@
 	} 
 	
 	&:focus {
-		border-color: $grey-border;
+		border-color: $grey-border-active;
 	}
-	&.is-error {
+	&.error {
 		border-color: $error;
 	}
 

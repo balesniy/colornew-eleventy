@@ -9,6 +9,7 @@
 	&__logo {
 		margin-right: 33px;
 		width: 57px;
+		transition: 0.3s ease-in-out;
 	}
 
 	&__burger {
@@ -17,6 +18,7 @@
 		width: 60px;
 		height: 60px;
 		margin-left: 30px;
+		padding: 4px;
 
 		&:hover {
 			color: $grey;
@@ -33,11 +35,21 @@
 
 	&.is-scroll {
 		padding: 16px 0;
-		background: $grey-dark;
-	}
-
-	&.is-up {
-		transform: translateY(-100%);
+		.contact-link {
+			opacity: 0;
+			visibility: hidden;
+		}
+		.header__logo {
+			opacity: 0;
+			visibility: hidden;
+		}
+		.lang {
+			opacity: 0;
+			visibility: hidden;
+		}
+		.header__burger {
+			background: $black;
+		}
 	}
 
 	@media screen and (max-width: 1300px) {

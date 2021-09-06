@@ -58,7 +58,9 @@ svg {
 		display: block;
 	}
 }
-
+.text-center {
+	text-align: center;
+}
 .text-nowrap {
 	white-space: nowrap;
 }
@@ -91,6 +93,17 @@ svg {
 .hidden {
 	display: none;
 }
+.tablet-show {
+	display: none;
+	@media screen and (max-width: 991px) {
+		display: block;
+	}
+}
+.tablet-hidden {
+	@media screen and (max-width: 991px) {
+		display: none;
+	}
+}
 .mobile-show {
 	display: none;
 	@media screen and (max-width: 767px) {
@@ -115,5 +128,26 @@ svg {
 
 	@media screen and (max-width: 991px) {
 		padding-left: 12px;
+	}
+}
+
+.list {
+	list-style: none;
+	line-height: 1.67;
+
+	li {
+		position: relative;
+		padding-left: 20px;
+
+		&::after {
+			content: '';
+			width: 4px;
+			height: 4px;
+			border-radius: 50%;
+			top: 0.7em;
+			left: 4px;
+			background: $white;
+			position: absolute;
+		}
 	}
 }

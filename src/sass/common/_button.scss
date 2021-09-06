@@ -34,6 +34,18 @@
 			border-color: $grey-medium;
 		}
 	}
+	&_border {
+		font-size: 16px;
+		padding: 0 40px;
+		height: 46px;
+		border: 1px solid $grey-medium;
+		color: $white;
+		border-radius: 40px;
+		&:hover,
+		&:active {
+			border-color: $white;
+		}
+	}
 	&_submit {
 		font-size: 18px;
 		padding: 0 30px;
@@ -46,6 +58,59 @@
 		&:active {
 			background: $grey-dark;
 		}
+	}
+
+	&_nav {
+		font-size: 14px;
+		padding: 0 24px;
+		height: 42px;
+		border: 1px solid $grey-dark;
+		color: $white;
+		border-radius: 40px;
+		&:hover,
+		&:active,
+		&.is-active {
+			background: $grey-medium;
+		}
+	}
+
+	&_secondary {
+		display: flex;
+		align-items: center;
+		background: $dark;
+		height: 40px;
+		padding: 0 10px;
+		cursor: pointer;
+		width: 100%;
+		text-align: center;
+		.button__text {
+			flex-grow: 1;
+			min-width: 0;
+			&:not(:last-child) {
+				padding-right: 10px;
+				text-align: left;
+			}
+		}
+
+		.button__arrow {
+			transition: 0.3s ease-in-out;
+			width: 20px;
+			min-width: 20px;
+			height: 20px;
+		}
+
+		&.is-active {
+			.project-button__arrow {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	&__icon {
+		display: block;
+		width: 24px;
+		height: 24px;
+		margin-left: 10px;
 	}
 
 	@media screen and (max-width: 991px) {
@@ -65,6 +130,17 @@
 		&_submit {
 			padding: 0 12px;
 			height: 44px;
+		}
+
+		&_nav {
+			font-size: 12px;
+			padding: 0 16px;
+			height: 36px;
+		}
+
+		&_mobile-full {
+			background: $grey-dark;
+			border-color: $grey-dark;
 		}
 	}
 
@@ -88,6 +164,15 @@
 		&_submit {
 			font-size: 14px;
 			height: 62px;
+		}
+		&_nav {
+			padding: 0 12px;
+			height: 32px;
+		}
+
+		&_border {
+			width: 100%;
+			font-size: 14px;
 		}
 	}
 }

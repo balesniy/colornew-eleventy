@@ -1,0 +1,187 @@
+---
+title: Portfolio
+feedback:
+    title: Are you ready to discover?
+    text: Are you interested in working with us? Write what you need and we will contact you.
+---
+
+<div class="section section_pb">
+    <div class="container">
+        <div class="page-hero">
+            <div class="breadcrumbs text-grey-medium">
+                <div class="breadcrumbs__item">
+                    <a href="#" class="link link_underline">
+                        <span class="link__text">ColorNew</span>
+                    </a>
+                </div>
+                <div class="breadcrumbs__item">
+                    >
+                </div>
+                <div class="breadcrumbs__item">
+                    Portfolio
+                </div>
+            </div><!-- /breadcrumbs -->
+
+            <h1>Projects <br>developed by us</h1>
+        </div><!-- /page-hero -->
+
+        <div class="nav nav_main">
+            <div class="nav__item">
+                <button type="button" class="button button_nav js-sorting-button" data-toggle="all">
+                    All projects
+                </button>
+            </div>
+            {% for item in projectsTypes.items %}
+                <div class="nav__item">
+                    <button type="button" class="button button_nav js-sorting-button" data-toggle="{{ item.toggle }}">
+                        {{ item.title }}
+                    </button>
+                </div>
+            {%- endfor %}
+        </div><!-- /nav -->
+
+        <div class="nav">
+            <div class="nav__item">
+                <button type="button" class="button button_nav js-sorting-button" data-toggle="all">
+                    All technologies
+                </button>
+            </div>
+            {% for item in technologiesList.items %}
+                <div class="nav__item">
+                    <button type="button" class="button button_nav js-sorting-button" data-toggle="{{ item.toggle }}">
+                        {{ item.title }}
+                    </button>
+                </div>
+            {%- endfor %}
+        </div><!-- /nav -->
+
+        <div class="projects-list">
+            <div class="g-row g-row_wrap js-sorting">
+                {% for project in collections.projects %}
+                {% set projectsTags = project.data.projects %}
+                {% set technologiesTags = project.data.technologies %}
+                <div class="g-col g-col_50 g-col_m-100 js-sorting-item projects-list__item {{ projectsTags | join(' ') | lower }} {{ technologiesTags | join(' ') | lower }}">
+                    <div class="project project_single">
+
+                        <div class="project__main">
+                            <div class="project__logo">
+                                <img src="{{ project.data.logo }}" alt="{{ project.data.title }}">
+                            </div>
+
+                            <div class="project__name">
+                                {{ project.data.title }}
+                            </div>
+
+                            <div class="g-row g-row_middle g-row_wrap">
+                                {% for name in projectsTags %}
+                                    <div class="g-col">
+                                        <div class="vacancy__tag text-grey-medium js-sorting-tag"
+                                             data-tag="{{ name | lower }}">
+                                            #{{ name }}
+                                        </div>
+                                    </div>
+                                {%- endfor %}
+
+                                {% for name in technologiesTags %}
+                                    <div class="g-col">
+                                        <div class="project__tag text-grey-medium js-sorting-tag"
+                                             data-tag="{{ name | lower }}">
+                                            #{{ name }}
+                                        </div>
+                                    </div>
+                                {%- endfor %}
+                            </div>
+                        </div>
+
+                        <div class="project__image">
+                            <img src="{{ project.data.img }}" alt="project">
+                        </div>
+
+                        <div class="tablet-show">
+                            <div class="button button_secondary js-project-more">
+                                <div class="button__text js-project-more-text">
+                                    Show information
+                                </div>
+                                <div class="button__arrow">
+                                    {% svg "sp-arrow-down" %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project__content tablet-hidden js-project-content">
+                            <div class="project-info">
+
+                                <div class="project-info__item">
+                                    <div class="project-info__title text-grey">
+                                        Product:
+                                    </div>
+                                    <div class="project-info__text">
+                                        {{ project.data.product }}
+                                    </div>
+                                </div>
+
+                                <div class="project-info__item">
+                                    <div class="project-info__text">
+                                        {{ project.templateContent | safe }}
+                                    </div>
+                                </div>
+
+                                <div class="project-info__item">
+                                    <div class="project-info__title text-grey">Result:
+                                    </div>
+                                    <div class="project-info__text">
+                                        {{ project.data.result }}
+                                    </div>
+                                </div>
+
+                                <div class="project__tags">
+                                    <div class="g-row g-row_middle g-row_wrap">
+                                        {% for tag in projectsTags %}
+                                        <div class="g-col">
+                                            <div class="project__tag text-grey js-sorting-tag"
+                                                 data-tag="{{ tag | lower }}">
+                                                #{{ tag }}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        {% for tag in project.data.technologies %}
+                                        <div class="g-col">
+                                            <div class="project__tag text-grey js-sorting-tag"
+                                                 data-tag="{{ tag | lower }}">
+                                                #{{ tag }}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div><!-- /project__tags -->
+
+                            </div><!-- /project-info -->
+
+                            <div class="project__bottom">
+                                <a href="#" class="link link_underline">
+                                    <span class="link__text">View project</span>
+                                    <span class="link__icon">{% svg "sp-chevron-right" %}</span>
+                                </a>
+                            </div>
+                        </div><!-- /project__content -->
+                    </div><!-- /project -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="mobile-show">
+            <a href="#" class="button button_secondary">
+                <span class="button__text">
+                    Show more projects
+                </span>
+            </a>
+        </div>
+    </div><!-- /container -->
+</div><!-- /section -->
+
+{% include "components/feedback.njk" %}
+{% include "components/map.njk" %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>

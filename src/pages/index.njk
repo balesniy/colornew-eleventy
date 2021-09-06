@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: Home page
+title: Main
 ---
 
 {% include "components/hero.njk" %}
@@ -13,22 +13,13 @@ title: Home page
                 <div class="g-col">
                     <h2 class="h2 section-title">Portfolio</h2>
                 </div>
-
-                <div class="g-col">
-                    <div class="portfolio-hand">
-                        {% svg "drag" %}
-                        <div class="portfolio-hand__arrow">
-                            {% svg "drag-arrow" %}
-                        </div>
-                    </div>
-                </div>
             </div>
         </div><!-- /portfolio__title -->
 
         <div class="g-row g-row_wrap g-row_middle">
 
             <div class="g-col g-col_41 g-col_d-100">
-                <div class="portfolio__content">
+                <div class="portfolio__content js-portfolio-text">
                     <div class="portfolio__text">
                         <p>
                             ColorNew deals with websites development, CRM, ERP, web and mobile applications.
@@ -41,7 +32,7 @@ title: Home page
                         </p>
                     </div>
                     <div class="portfolio-data js-animate-block">
-                        <div class="g-row g-row_wrap">
+                        <div class="g-row">
                             <div class="g-col g-col_50 portfolio-data__item">
                                 <div class="text-grey-medium portfolio-data__title h6">Projects done:</div>
                                 <div class="h4">
@@ -57,8 +48,10 @@ title: Home page
                                     <span class="js-animate-text hidden">year</span>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="g-col g-col_100 portfolio-data__item">
+                        <div class="g-row g-row_between g-row_bottom">
+                            <div class="g-col g-col_full portfolio-data__item">
                                 <div class="text-grey-medium portfolio-data__title h6">The number of
                                     employees:
                                 </div>
@@ -67,6 +60,17 @@ title: Home page
                                     <span class="js-animate-text hidden">employees</span>
                                 </div>
                             </div>
+
+                            <!-- <div class="g-col mobile-show">
+                                <div class="portfolio-hand">
+                                    <div class="portfolio-hand__main">
+                                        <img src="img/drag.svg" alt="drag">
+                                    </div>
+                                    <div class="portfolio-hand__arrow">
+                                        <img src="img/drag-arrow.svg" alt="drag">
+                                    </div>
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div><!-- /portfolio__content -->
@@ -74,6 +78,15 @@ title: Home page
 
             <div class="g-col g-col_59 g-col_d-100">
                 <div class="portfolio__slider">
+                    <div class="portfolio-circle">
+                        <div class="portfolio-circle__arrow">
+                            {% svg "sp-arrow-prev" %}
+                        </div>
+                        <div class="portfolio-circle__text">Drag me</div>
+                        <div class="portfolio-circle__arrow">
+                            {% svg "sp-arrow-next" %}
+                        </div>
+                    </div>
                     {% include "components/projectslist.njk" %}
                 </div>
             </div>
@@ -97,88 +110,88 @@ title: Home page
         <div class="g-row g-row_wrap">
 
             <div class="g-col g-col_50 g-col_s-100 services__item">
-                <div class="services-card" style="background-image: url(img/content/project1.jpg);">
-                    <div class="services-card__content">
-                        <div class="services-card__title h3 text-grey">
-                            WEB & MOBILE
-                        </div>
-                        <div class="services-card__text">
-                            <p>Web and mobile applications development</p>
-                        </div>
-                        <div class="services-card__bottom">
-                            <a href="#" class="link text-grey-medium">
-                                <span class="link__text">View projects</span>
-                                <span class="link__icon">
+                <a href="/portfolio/" class="services-card" style="background-image: url(img/content/project1.jpg);">
+								<span class="services-card__content">
+									<span class="services-card__title h3 text-grey">
+										WEB & MOBILE
+									</span>
+									<span class="services-card__text">
+										Web and mobile applications development
+									</span>
+									<span class="services-card__bottom">
+										<span class="link text-grey-medium">
+											<span class="link__text">View projects</span>
+											<span class="link__icon">
 												{% svg "sp-chevron-right" %}
 											</span>
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- /services-card -->
+										</span>
+									</span>
+								</span>
+                </a><!-- /services-card -->
             </div>
 
             <div class="g-col g-col_50 g-col_s-100 services__item">
-                <div class="services-card" style="background-image: url(img/content/project2.jpg);">
-                    <div class="services-card__content">
-                        <div class="services-card__title h3 text-grey">
-                            3D/AR
-                        </div>
-                        <div class="services-card__text">
-                            <p>Development of web and mobile applications using 3D technologies and
-                                augmented reality (AR) technologies</p>
-                        </div>
-                        <div class="services-card__bottom">
-                            <a href="#" class="link text-grey-medium">
-                                <span class="link__text">View projects</span>
-                                <span class="link__icon">
+                <a href="/portfolio/" class="services-card" style="background-image: url(img/content/project2.jpg);">
+								<span class="services-card__content">
+									<span class="services-card__title h3 text-grey">
+										3D/AR
+									</span>
+									<span class="services-card__text">
+										Development of web and mobile applications using 3D technologies and
+										augmented reality (AR) technologies
+									</span>
+									<span class="services-card__bottom">
+										<span class="link text-grey-medium">
+											<span class="link__text">View projects</span>
+											<span class="link__icon">
 												{% svg "sp-chevron-right" %}
 											</span>
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- /services-card -->
+										</span>
+									</span>
+								</span>
+                </a><!-- /services-card -->
             </div>
 
             <div class="g-col g-col_50 g-col_s-100 services__item">
-                <div class="services-card" style="background-image: url(img/content/project3.jpg);">
-                    <div class="services-card__content">
-                        <div class="services-card__title h3 text-grey">
-                            BUSINESS ANALYSIS
-                        </div>
-                        <div class="services-card__text">
-                            <p>Systematic business analysis for the further digitalization of business</p>
-                        </div>
-                        <div class="services-card__bottom">
-                            <a href="#" class="link text-grey-medium">
-                                <span class="link__text">View projects</span>
-                                <span class="link__icon">
+                <a href="/portfolio/" class="services-card" style="background-image: url(img/content/project3.jpg);">
+								<span class="services-card__content">
+									<span class="services-card__title h3 text-grey">
+										BUSINESS ANALYSIS
+									</span>
+									<span class="services-card__text">
+										Systematic business analysis for the further digitalization of business
+									</span>
+									<span class="services-card__bottom">
+										<span class="link text-grey-medium">
+											<span class="link__text">View projects</span>
+											<span class="link__icon">
 												{% svg "sp-chevron-right" %}
 											</span>
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- /services-card -->
+										</span>
+									</span>
+								</span>
+                </a><!-- /services-card -->
             </div>
 
             <div class="g-col g-col_50 g-col_s-100 services__item">
-                <div class="services-card" style="background-image: url(img/content/project1.jpg);">
-                    <div class="services-card__content">
-                        <div class="services-card__title h3 text-grey">
-                            CRM/ERP
-                        </div>
-                        <div class="services-card__text">
-                            <p>CRM and ERP systems development</p>
-                        </div>
-                        <div class="services-card__bottom">
-                            <a href="#" class="link text-grey-medium">
-                                <span class="link__text">View projects</span>
-                                <span class="link__icon">
+                <a href="/portfolio/" class="services-card" style="background-image: url(img/content/project1.jpg);">
+								<span class="services-card__content">
+									<span class="services-card__title h3 text-grey">
+										CRM/ERP
+									</span>
+									<span class="services-card__text">
+										CRM and ERP systems development
+									</span>
+									<span class="services-card__bottom">
+										<span class="link text-grey-medium">
+											<span class="link__text">View projects</span>
+											<span class="link__icon">
 												{% svg "sp-chevron-right" %}
 											</span>
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- /services-card -->
+										</span>
+									</span>
+								</span>
+                </a><!-- /services-card -->
             </div>
 
         </div>
@@ -204,13 +217,45 @@ title: Home page
     <div class="technologies__slider">
         <div class="swiper-container js-technologies-slider js-animate-slider1">
             <div class="swiper-wrapper">
-                {% for i in range(1, 14) -%}
-                    <div class="swiper-slide">
-{#                        <img src="img/content/logo{{ i }}.png" alt="logo">#}
-                        {% set imgPath = "src/img/content/logo" + i + ".png" %}
-                        {% image imgPath, "logo" %}
-                    </div>
-                {%- endfor %}
+                <div class="swiper-slide">
+                    <img src="img/content/logo1.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo2.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo3.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo4.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo5.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo6.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo7.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo22.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo25.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo28.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo31.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo34.jpg" alt="logo">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/content/logo37.jpg" alt="logo">
+                </div>
             </div>
         </div>
     </div><!-- /technologies__slider -->
@@ -219,43 +264,43 @@ title: Home page
         <div dir="rtl" class="swiper-container js-technologies-slider js-animate-slider2">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="img/content/logo8.png" alt="logo">
+                    <img src="img/content/logo8.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo9.png" alt="logo">
+                    <img src="img/content/logo9.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo10.png" alt="logo">
+                    <img src="img/content/logo10.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo11.png" alt="logo">
+                    <img src="img/content/logo11.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo12.png" alt="logo">
+                    <img src="img/content/logo12.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo13.png" alt="logo">
+                    <img src="img/content/logo13.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo14.png" alt="logo">
+                    <img src="img/content/logo14.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo23.png" alt="logo">
+                    <img src="img/content/logo23.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo26.png" alt="logo">
+                    <img src="img/content/logo26.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo29.png" alt="logo">
+                    <img src="img/content/logo29.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo32.png" alt="logo">
+                    <img src="img/content/logo32.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo35.png" alt="logo">
+                    <img src="img/content/logo35.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo38.png" alt="logo">
+                    <img src="img/content/logo38.jpg" alt="logo">
                 </div>
             </div>
         </div>
@@ -265,43 +310,43 @@ title: Home page
         <div class="swiper-container js-technologies-slider js-animate-slider3">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="img/content/logo15.png" alt="logo">
+                    <img src="img/content/logo15.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo16.png" alt="logo">
+                    <img src="img/content/logo16.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo17.png" alt="logo">
+                    <img src="img/content/logo17.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo18.png" alt="logo">
+                    <img src="img/content/logo18.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo19.png" alt="logo">
+                    <img src="img/content/logo19.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo20.png" alt="logo">
+                    <img src="img/content/logo20.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo21.png" alt="logo">
+                    <img src="img/content/logo21.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo24.png" alt="logo">
+                    <img src="img/content/logo24.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo27.png" alt="logo">
+                    <img src="img/content/logo27.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo30.png" alt="logo">
+                    <img src="img/content/logo30.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo33.png" alt="logo">
+                    <img src="img/content/logo33.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo36.png" alt="logo">
+                    <img src="img/content/logo36.jpg" alt="logo">
                 </div>
                 <div class="swiper-slide">
-                    <img src="img/content/logo39.png" alt="logo">
+                    <img src="img/content/logo39.jpg" alt="logo">
                 </div>
             </div>
         </div>
@@ -328,7 +373,7 @@ title: Home page
 
                 <div class="g-col g-col_33 g-col_m-100">
                     <div class="text-grey-dark h6">The number of employees:</div>
-                    <div class="h5">15 employees</div>
+                    <div class="h5">{{ meta.employees }} employees</div>
                 </div>
             </div>
         </div><!-- /section-introduce -->
@@ -2087,24 +2132,5 @@ title: Home page
     </div> <!-- /container -->
 </section>
 
-<section class="section section_map" id="contact-form">
-    <div class="container">
-        <div class="section-introduce mobile-show">
-            <h2 class="h2 section-title">Contacts</h2>
-        </div><!-- /section-introduce -->
 
-        <div class="g-row g-row_middle">
-            <div class="g-col g-col_50 g-col_d-auto g-col_m-100">
-                <div class="form-wrapper">
-                    <h6 class="form__title text-blue">Feedback form</h6>
-                    {% include "components/form.njk" %}
-                </div><!-- /form-wrapper -->
-            </div>
-            <div class="g-col g-col_50 g-col_d-auto mobile-hidden">
-                <div class="adress">
-                    <img src="img/adress.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div> <!-- /container -->
-</section>
+{% include "components/map.njk" %}

@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "title": "Web",
+      "toggle": ".web"
+    },
+    {
+      "title": "Mobile",
+      "toggle": ".mobile"
+    }
+  ]
+}

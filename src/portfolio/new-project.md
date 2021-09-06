@@ -1,7 +1,10 @@
 ---
 title: New project
 product: Web - application
+projects: ['web']
+technologies: ['Apache', 'Laravel']
 img: /img/content/project2.jpg
+logo: /img/content/MadWave.png
 result: Increase in revenue by 100% in 6 months of development.
 ---
 
