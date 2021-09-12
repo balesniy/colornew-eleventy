@@ -105,7 +105,7 @@ feedback:
 
         <div class="vacancies">
             <div class="vacancies__title">
-                Vacancies <span class="text-blue">({{ collections.vacancies.length }})</span>
+                Vacancies <span class="text-blue">({{ collections.vacancies | reject("draft") | length }})</span>
             </div>
         </div><!-- /vacancies -->
 
@@ -141,7 +141,7 @@ feedback:
 
         <div class="vacancies-list">
             <div class="g-row g-row_wrap js-sorting">
-                {% for vacancy in collections.vacancies %}
+                {% for vacancy in collections.vacancies | reject("draft") %}
                 {% set projectsTags = vacancy.data.projects %}
                     <div class="g-col g-col_33 g-col_t-50 g-col_s-100 js-sorting-item vacancies-list__item {{ projectsTags | join(' ') | lower }} {{ vacancy.data.technologies | join(' ') | lower }}">
                         <a href="{{ vacancy.url }}" class="vacancy">

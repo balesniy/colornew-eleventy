@@ -1,11 +1,6 @@
 ---
 title: Portfolio
-eleventyExcludeFromCollections: true
-pagination:
-    data: projectsTypes.items
-    size: 1
-    alias: projectType
-permalink: "portfolio/{{ projectType.title | slug }}/"
+permalink: "/portfolio/"
 feedback:
     title: Are you ready to discover?
     text: Are you interested in working with us? Write what you need and we will contact you.
@@ -38,9 +33,8 @@ feedback:
                 </button>
             </div>
             {% for item in projectsTypes.items %}
-                {% set isActive = item.title == projectType.title %}
                 <div class="nav__item">
-                    <button type="button" class="button button_nav js-sorting-button {% if isActive %}is-active{% endif %}" data-toggle="{{ item.toggle }}">
+                    <button type="button" class="button button_nav js-sorting-button" data-toggle="{{ item.toggle }}">
                         {{ item.title }}
                     </button>
                 </div>

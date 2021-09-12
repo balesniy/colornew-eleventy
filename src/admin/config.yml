@@ -49,6 +49,7 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Draft", name: "draft", widget: "boolean" }
       - label: "Projects Tags"
         name: "projects"
         widget: "relation"

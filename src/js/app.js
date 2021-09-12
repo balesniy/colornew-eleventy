@@ -16,8 +16,9 @@ $(document).ready(() => {
   });
 
   $(document).click((event) => {
-    if ($(event.target).closest('.js-dropdown').length)
-    {return;}
+    if ($(event.target).closest('.js-dropdown').length) {
+      return;
+    }
     $('.js-dropdown').removeClass('is-active');
     event.stopPropagation();
   });
@@ -38,8 +39,7 @@ $(document).ready(() => {
 
     if (i == 1) {
       $('.js-portfolio-text').removeClass('is-animate');
-    }
-    else {
+    } else {
       $('.js-portfolio-text').addClass('is-animate');
     }
   });
@@ -50,11 +50,11 @@ $(document).ready(() => {
   function fixedHeader() {
     if ($(window).scrollTop() > 70) {
       $header.addClass('is-scroll');
-    }
-    else {
+    } else {
       $header.removeClass('is-scroll');
     }
   }
+
   fixedHeader();
 
   $(window).scroll(() => {
@@ -91,8 +91,7 @@ $(document).ready(() => {
         animateSlider1.slideNext(600);
         animateSlider2.slideNext(600);
         animateSlider3.slideNext(600);
-      }
-      else {
+      } else {
         animateSlider1.slidePrev(600);
         animateSlider2.slidePrev(600);
         animateSlider3.slidePrev(600);
@@ -154,8 +153,7 @@ $(document).ready(() => {
   function showUp() {
     if ($(window).scrollTop() > 200) {
       $('.js-up').addClass('is-visible');
-    }
-    else {
+    } else {
       $('.js-up').removeClass('is-visible');
     }
   }
@@ -175,8 +173,8 @@ $(document).ready(() => {
   // aнимация картинки hero
   $('.js-hero').on('mousemove', (event) => {
     $('.js-hero-circle').css({
-      'top': `${event.pageY * 1 + 5  }px`,
-      'left': `${event.pageX * 1 + 5  }px`,
+      'top': `${event.pageY * 1 + 5}px`,
+      'left': `${event.pageX * 1 + 5}px`,
     });
   });
 
@@ -260,6 +258,7 @@ $(document).ready(() => {
         show_technologies = true;
       }
     }
+
     animateTechnologies();
     $(window).scroll(() => {
       animateTechnologies();
@@ -299,6 +298,11 @@ $(document).ready(() => {
 
 
   if ($('.js-sorting').length > 0) {
+    const tags = (new URL(window.location)).searchParams.getAll('tag');
+    const active = $('.js-sorting-button.is-active').map(function() {
+      return $( this ).attr('data-toggle');
+    }).get();
+    const selector = tags.map((tag) => `.${tag}`).concat(active).join(',');
     const mixer = mixitup('.js-sorting', {
       selectors: {
         target: '.js-sorting-item',
@@ -315,26 +319,20 @@ $(document).ready(() => {
           masonryGrid();
         },
       },
+      load: {
+        filter: selector || 'all',
+      },
     });
   }
-
 
   function checkActive() {
     $('.js-sorting-button.is-active').each(function () {
       const $this = $(this);
       const params = $this.attr('data-toggle').substr(1);
-      $(`.js-sorting-tag[data-tag="${  params  }"]`).addClass('is-selected');
+      $(`.js-sorting-tag[data-tag="${params}"]`).addClass('is-selected');
     });
   }
 
-  const tag = (new URL(window.location)).searchParams.get('tag');
-  if (tag) {
-    const button = $(`.js-sorting-button[data-toggle=".${ tag }"]`);
-    const nav = button.closest('.nav');
-    const current = nav.find('.js-sorting-button.is-active');
-    current.removeClass('is-active');
-    button.addClass('is-active');
-  }
   checkActive();
 
   $('.js-sorting-button').on('click', function () {
@@ -342,11 +340,11 @@ $(document).ready(() => {
     const param = $this.attr('data-toggle').substr(1);
     if ($this.hasClass('is-active')) {
       $('.js-sorting-tag').removeClass('is-selected');
-      $(`.js-sorting-tag[data-tag="${  param  }"]`).addClass('is-selected');
+      $(`.js-sorting-tag[data-tag="${param}"]`).addClass('is-selected');
       checkActive();
       $('.js-sorting-item').removeClass('is-down');
     } else {
-      $(`.js-sorting-tag[data-tag="${  param  }"]`).removeClass('is-selected');
+      $(`.js-sorting-tag[data-tag="${param}"]`).removeClass('is-selected');
       checkActive();
       $('.js-sorting-item').removeClass('is-down');
     }
@@ -383,7 +381,7 @@ $(document).ready(() => {
     const formData = new FormData(e.target);
     fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'multipart/form-data' },
+      headers: {'Content-Type': 'multipart/form-data'},
       body: new URLSearchParams(formData).toString(),
     });
   };

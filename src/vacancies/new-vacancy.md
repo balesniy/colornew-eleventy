@@ -18,7 +18,7 @@ conditions:
     - Opportunity to work in the city (metro station "pl. Lenin");
 
 img: /img/content/project1.jpg
-
+draft: false
 ---
 - Experience from 2 years;
 - Strong knowledge of JavaScript;
