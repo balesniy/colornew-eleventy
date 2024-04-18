@@ -18,9 +18,7 @@ const chat = await cohere.chat({
         message: `suggest one best name for pizza with ${query || '🥬,🍄,🥓'} return only name in italian language`,
     });
 
-  console.log(chat)
-
-  return new Response(chat, {
+  return new Response(chat.text, {
     headers: {
        'access-control-allow-origin': '*'
     }
