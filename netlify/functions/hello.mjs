@@ -1,8 +1,13 @@
 export default async (req, context) => {
-  console.log('event', req.path, req.url)
-    console.log('handler', req.queryStringParameters)
+  const url = new URL(req.url);
 
-  return new Response(`Hello, ${req.queryStringParameters?.query || Date.now()}`, {
+ // Use URLSearchParams to work with the query string
+ const params = new URLSearchParams(url.search);
+
+ // Get a specific query parameter
+ const query = params.get('query');
+
+  return new Response(`Hello, ${query || Date.now()}`, {
     headers: {
        'access-control-allow-origin': '*'
     }
